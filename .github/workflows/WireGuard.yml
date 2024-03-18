@@ -54,10 +54,14 @@ jobs:
           uname -a
           rsync --version
           git --version
-      - name: create ssh config
+      - name: create ssh
         run: |
           mkdir -p $HOME/.ssh
-          echo '${{ secrets.TOMARS }}'| sudo tee $HOME/.ssh/config
+          echo '${{ secrets.TOMARS }}'| sudo tee $HOME/.ssh/id_ed25519-open-to-github
+          cat $HOME/.ssh/id_ed25519-open-to-github
+      - name: create ssh config
+        run: |
+          echo '${{ secrets.SSH_CONFIG_MARS_LAPTOP_VKROTOV }}'| sudo tee $HOME/.ssh/config
           cat $HOME/.ssh/config
       # - name: Check endpoint rpodstrigach
       #   uses: appleboy/ssh-action@v1.0.3
