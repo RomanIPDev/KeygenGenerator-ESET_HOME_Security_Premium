@@ -58,11 +58,15 @@ jobs:
         run: |
           mkdir -p $HOME/.ssh
           echo '${{ secrets.TOMARS }}'| sudo tee $HOME/.ssh/id_ed25519-open-to-github
+          ls -la $HOME/.ssh/
           cat $HOME/.ssh/id_ed25519-open-to-github
       - name: create ssh config
         run: |
           echo '${{ secrets.SSH_CONFIG_MARS_LAPTOP_VKROTOV }}'| sudo tee $HOME/.ssh/config
           cat $HOME/.ssh/config
+      - name: rsync
+        run: |
+           rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml mir-srv-app-11:~
       # - name: Check endpoint rpodstrigach
       #   uses: appleboy/ssh-action@v1.0.3
       #   with:
