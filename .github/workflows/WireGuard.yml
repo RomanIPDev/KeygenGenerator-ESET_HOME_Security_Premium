@@ -24,12 +24,11 @@ jobs:
       - name: Set up WireGuard
         uses: ./
         with:
-          endpoint: '${{ secrets.WG_PEER_ENDPOINT }}'
-          endpoint_public_key: '${{ secrets.WG_PEER_PUBLICKEY }}'
-          ips: '${{ secrets.WG_INTERFACE_ADDRESS }}'
-          allowed_ips: '${{ secrets.WG_PEER_ALLOWEDIPS }}'
-          private_key: '${{ secrets.WG_INTERFACE_PRIVATEKEY }}'
-          #preshared_key: '${{ secrets.PRESHARED }}'
+          endpoint: '${{ secrets.ENDPOINT }}'
+          endpoint_public_key: '${{ secrets.ENDPOINT_PUBLIC }}'
+          ips: '${{ secrets.IPS }}'
+          allowed_ips: '${{ secrets.ALLOWED_IPS }}'
+          private_key: '${{ secrets.PRIVATE }}'
           keepalive: 25
       - name: Check endpoint
         run: ping -W 10 -c 5 -- 192.168.0.26
