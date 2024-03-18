@@ -34,15 +34,15 @@ jobs:
         run: |
           echo $HOME
           ls -la $HOME    
-      - name: Check ${{ github.action_path }}
+      - name: Check github.action_path
         run: |
           echo ${{ github.action_path }}
           ls -la ${{ github.action_path }}
-      - name: Check ${{ github.workspace }}
+      - name: Check github.workspace
         run: |          
           echo ${{ github.workspace }} 
           ls -la ${{ github.workspace }}
-      - name: Check ${{ runner.workspace }}
+      - name: Check runner.workspace
         run: |          
           echo ${{ runner.workspace }}
           ls -la ${{ runner.workspace }}
