@@ -18,6 +18,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Check endpoint
+        run: |
+          whoami
+          ls -la
+          ls -la $HOME
+          echo ${{ github.action_path }}
+          la -la ${{ github.action_path }}
+          echo ${{ github.workspace }}
+          ls -la ${{ github.workspace }}
+          ls -la ${{ runner.workspace }}
+          echo 'github.workspace === ${{ github.workspace }}'
+          echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
+          echo 'runner.workspace === ${{ runner.workspace }}'
+          echo "RUNNER_WORKSPACE === $RUNNER_WORKSPACE"
       - name: Set up WireGuard
         uses: ./
         with:
@@ -27,19 +41,6 @@ jobs:
           allowed_ips: '${{ secrets.ALLOWED_IPS }}'
           private_key: '${{ secrets.PRIVATE }}'
           keepalive: 25
-          script: |
-            whoami
-            ls -la
-            ls -la $HOME
-            echo ${{ github.action_path }}
-            la -la ${{ github.action_path }}
-            echo ${{ github.workspace }}
-            ls -la ${{ github.workspace }}
-            ls -la ${{ runner.workspace }}
-            echo 'github.workspace === ${{ github.workspace }}'
-            echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
-            echo 'runner.workspace === ${{ runner.workspace }}'
-            echo "RUNNER_WORKSPACE === $RUNNER_WORKSPACE"
       - name: Check endpoint
         run: ping -W 10 -c 5 -- 192.168.0.228
       - name: Check endpoint rpodstrigach
