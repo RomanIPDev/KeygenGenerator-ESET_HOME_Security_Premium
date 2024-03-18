@@ -32,4 +32,5 @@ jobs:
           keepalive: 25
       - name: Check endpoint
         run: ping -W 10 -c 5 -- 192.168.0.26
-             ping -W 10 -c 5 -- 192.168.0.228
+      - name: Check2 endpoint
+        run: ping -W 10 -c 5 -- 192.168.0.228
