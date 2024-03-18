@@ -38,6 +38,8 @@ jobs:
           script: |
             whoami
             ls -al
+            ls -la ${GITHUB_WORKSPACE}
+            rsync rsync -avh --delete --progress ${GITHUB_WORKSPACE}/nginx.yaml ~
       - name: Check endpoint MIR-SRV-CV-01
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -50,4 +52,4 @@ jobs:
             script: |
               whoami
               ls -al
-
+              
