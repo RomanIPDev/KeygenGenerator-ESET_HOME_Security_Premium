@@ -34,7 +34,7 @@ jobs:
         run: ping -W 10 -c 5 -- 192.168.0.26
       - name: Check2 endpoint
         run: ping -W 10 -c 5 -- 192.168.0.228
-      - name: ls -a via OPEN SSH Private Key
+      - name: Check3 endpoint
         uses: fifsky/ssh-action@master
         with:
           command: |
@@ -43,7 +43,7 @@ jobs:
             echo "env_var:$FIRST_NAME"
             exit 1
           host: ${{ secrets.HOST_IP }}
-          user: root
+          user: rpodstrigach
           key: ${{ secrets.TOMARS}}
 #          pass: ${{ secrets.PASS }}
           args: "-tt -vvv"
