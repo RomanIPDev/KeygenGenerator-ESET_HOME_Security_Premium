@@ -37,21 +37,21 @@ jobs:
           key: ${{ secrets.TOMARS }}
           script: |
             echo ${{ github.workspace }}
-            echo $GITHUB_WORKSPACE
+            ls -la ${{ github.workspace }}
             #whoami
-            ls -la
-            rsync rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml ~
-            ls -la
-      - name: Check endpoint MIR-SRV-CV-01
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-            host: 10.36.68.146
-            username: nvidia
-            key: ${{ secrets.TOMARS }}
-            proxy_host: 192.168.0.228
-            proxy_username: ct402130
-            proxy_key: ${{ secrets.TOMARS }}
-            script: |
-              whoami
-              ls -al
+            #ls -la
+            #rsync rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml ~
+            #ls -la
+      # - name: Check endpoint MIR-SRV-CV-01
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #       host: 10.36.68.146
+      #       username: nvidia
+      #       key: ${{ secrets.TOMARS }}
+      #       proxy_host: 192.168.0.228
+      #       proxy_username: ct402130
+      #       proxy_key: ${{ secrets.TOMARS }}
+      #       script: |
+      #         whoami
+      #         ls -al
               
