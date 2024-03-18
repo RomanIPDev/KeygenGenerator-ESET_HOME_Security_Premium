@@ -24,14 +24,15 @@ jobs:
           ls -la
           ls -la $HOME
           echo ${{ github.action_path }}
-          la -la ${{ github.action_path }}
+          ls -la ${{ github.action_path }}
           echo ${{ github.workspace }}
           ls -la ${{ github.workspace }}
+          echo ${{ runner.workspace }}
           ls -la ${{ runner.workspace }}
-          echo 'github.workspace === ${{ github.workspace }}'
-          echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
-          echo 'runner.workspace === ${{ runner.workspace }}'
-          echo "RUNNER_WORKSPACE === $RUNNER_WORKSPACE"
+          #echo 'github.workspace === ${{ github.workspace }}'
+         #echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
+          #echo 'runner.workspace === ${{ runner.workspace }}'
+         #echo "RUNNER_WORKSPACE === $RUNNER_WORKSPACE"
       - name: Set up WireGuard
         uses: ./
         with:
