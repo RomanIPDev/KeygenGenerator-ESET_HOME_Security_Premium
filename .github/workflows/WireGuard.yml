@@ -40,7 +40,7 @@ jobs:
             echo $GITHUB_WORKSPACE
             #whoami
             #ls -la
-            #rsync rsync -avh --delete --progress ${GITHUB_WORKSPACE}/nginx.yaml ~
+            #rsync rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml ~
       - name: Check endpoint MIR-SRV-CV-01
         uses: appleboy/ssh-action@v1.0.3
         with:
