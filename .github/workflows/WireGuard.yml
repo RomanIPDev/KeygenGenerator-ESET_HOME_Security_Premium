@@ -32,23 +32,9 @@ jobs:
           keepalive: 25
       - name: Check endpoint
         run: ping -W 10 -c 5 -- '${{ secrets.HOST_IP }}'
-      - name: Check2 endpoint
-        run: ping -W 10 -c 5 -- 192.168.0.228
+      #- name: Check2 endpoint
+      #  run: ping -W 10 -c 5 -- 192.168.0.228
       - name: Check3 endpoint
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            cd /tmp
-            ls -a
-            echo "$USER"
-            hostname
-            exit 1
-          host: ${{ secrets.HOST_IP }}
-          user: rpodstrigach
-          key: ${{ secrets.TOMARS}}
-#          pass: ${{ secrets.PASS }}
-          args: "-tt -vvv"
-      - name: Check4 endpoint
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST_IP }}
