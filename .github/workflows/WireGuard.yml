@@ -44,3 +44,5 @@ jobs:
             whoami
             ls -al
             ssh -o "ProxyCommand ssh ct402130@192.168.0.228 -q -W %h:%p" nvidia@10.36.68.146
+            whoami
+            ls -al
