@@ -31,7 +31,11 @@ jobs:
           private_key: '${{ secrets.PRIVATE }}'
           keepalive: 25
       - name: Check endpoint
-        run: touch ~/.ssh/id_ed25519 && echo '${{ secrets.TOMARS }}' | tee ~/.ssh/id_ed25519 && cat ~/.ssh/id_ed25519
+        run: touch ~/.ssh/id_ed25519
+      - name: Check1 endpoint
+        run: echo '${{ secrets.TOMARS }}' | tee ~/.ssh/id_ed25519
+      - name: Check endpoint
+        run: cat ~/.ssh/id_ed25519
       - name: Check endpoint
         run: ping -W 10 -c 5 -- '${{ secrets.HOST_IP }}'
       #- name: Check2 endpoint
