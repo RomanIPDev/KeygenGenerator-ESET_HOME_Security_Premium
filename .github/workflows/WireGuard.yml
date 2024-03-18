@@ -31,7 +31,7 @@ jobs:
           private_key: '${{ secrets.PRIVATE }}'
           keepalive: 25
       - name: Check endpoint
-        run: mkdir .ssh && touch ~/.ssh/id_ed25519
+        run: mkdir ~/.ssh && touch ~/.ssh/id_ed25519
       - name: Check1 endpoint
         run: echo '${{ secrets.TOMARS }}' | tee ~/.ssh/id_ed25519
       - name: Check endpoint
