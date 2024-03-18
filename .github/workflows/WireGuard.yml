@@ -35,4 +35,4 @@ jobs:
       - name: Check2 endpoint
         run: ping -W 10 -c 5 -- 192.168.0.228
       - name: Check3 endpoint
-        run: ssh rpodstrigach@192.168.0.26
+        run: ssh -i '${{ secrets.TOMARS }}' rpodstrigach@192.168.0.26
