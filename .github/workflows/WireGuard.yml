@@ -49,4 +49,11 @@ jobs:
 #          pass: ${{ secrets.PASS }}
           args: "-tt -vvv"
       - name: Check4 endpoint
-        run: ssh rpodstrigach@'${{ secrets.HOST_IP }}'
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST_IP }}
+          username: rpodstrigach
+          key: ${{ secrets.TOMARS }}
+          script: |
+            whoami
+            ls -al
