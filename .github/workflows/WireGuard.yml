@@ -27,36 +27,39 @@ jobs:
           allowed_ips: '${{ secrets.ALLOWED_IPS }}'
           private_key: '${{ secrets.PRIVATE }}'
           keepalive: 25
-      - name: Check endpoint
-        run: ping -W 10 -c 5 -- 192.168.0.228
-      - name: Check endpoint
+      - name: Check whoami
         run: |
           whoami
+      - name: Check $HOME
+        run: |
           echo $HOME
-          ls -la $HOME
-      - name: Check endpoint github.action_path
+          ls -la $HOME    
+      - name: Check ${{ github.action_path }}
         run: |
           echo ${{ github.action_path }}
           ls -la ${{ github.action_path }}
-      - name: Check endpoint github.workspace
+      - name: Check ${{ github.workspace }}
         run: |          
           echo ${{ github.workspace }} 
           ls -la ${{ github.workspace }}
-      - name: Check endpoint runner.workspace
+      - name: Check ${{ runner.workspace }}
         run: |          
           echo ${{ runner.workspace }}
           ls -la ${{ runner.workspace }}
-      - name: Check endpoint echo 
-        run: |          
-          echo 'github.workspace === ${{ github.workspace }}'
-          echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
-          echo 'runner.workspace === ${{ runner.workspace }}'
-          echo "RUNNER_WORKSPACE === $RUNNER_WORKSPACE"
+      - name: Check ping
+        run: ping -W 10 -c 5 -- 192.168.0.228
+      # - name: Check endpoint echo 
+      #   run: |          
+      #     echo 'github.workspace === ${{ github.workspace }}'
+      #     echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
+      #     echo 'runner.workspace === ${{ runner.workspace }}'
+      #     echo "RUNNER_WORKSPACE === $RUNNER_WORKSPACE"
       - name: Check endpoint version
         run: |   
           ssh -V
           uname -a
           rsync --version
+          git --version
       # - name: Check endpoint rpodstrigach
       #   uses: appleboy/ssh-action@v1.0.3
       #   with:
