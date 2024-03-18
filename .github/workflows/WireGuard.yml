@@ -41,9 +41,12 @@ jobs:
           echo ${{ runner.workspace }}
           ls -la ${{ runner.workspace }}
           #echo 'github.workspace === ${{ github.workspace }}'
-         #echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
+          #echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
           #echo 'runner.workspace === ${{ runner.workspace }}'
-         #echo "RUNNER_WORKSPACE === $RUNNER_WORKSPACE"
+          #echo "RUNNER_WORKSPACE === $RUNNER_WORKSPACE"
+          ssh -V
+          uname -a
+          rsync --version
       # - name: Check endpoint rpodstrigach
       #   uses: appleboy/ssh-action@v1.0.3
       #   with:
