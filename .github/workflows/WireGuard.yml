@@ -39,7 +39,7 @@ jobs:
           echo ${{ github.action_path }}
           ls -la ${{ github.action_path }}
       - name: Check github.workspace
-        run: |          
+        run: |    
           echo ${{ github.workspace }} 
           ls -la ${{ github.workspace }}
       - name: Check runner.workspace
@@ -48,18 +48,17 @@ jobs:
           ls -la ${{ runner.workspace }}
       - name: Check ping
         run: ping -W 10 -c 5 -- 192.168.0.228
-      # - name: Check endpoint echo 
-      #   run: |          
-      #     echo 'github.workspace === ${{ github.workspace }}'
-      #     echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
-      #     echo 'runner.workspace === ${{ runner.workspace }}'
-      #     echo "RUNNER_WORKSPACE === $RUNNER_WORKSPACE"
       - name: Check endpoint version
-        run: |   
+        run: |
           ssh -V
           uname -a
           rsync --version
           git --version
+      - name: create ssh config
+        run: |
+          mkdir -p $HOME/.ssh
+          echo '${{ secrets.TOMARS }}'| sudo tee $HOME/.ssh/config
+          cat $HOME/.ssh/config
       # - name: Check endpoint rpodstrigach
       #   uses: appleboy/ssh-action@v1.0.3
       #   with:
@@ -84,4 +83,11 @@ jobs:
       #       script: |
       #         whoami
       #         ls -al
+
+            # - name: Check endpoint echo 
+      #   run: |          
+      #     echo 'github.workspace === ${{ github.workspace }}'
+      #     echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
+      #     echo 'runner.workspace === ${{ runner.workspace }}'
+      #     echo "RUNNER_WORKSPACE === $RUNNER_WORKSPACE"
               
