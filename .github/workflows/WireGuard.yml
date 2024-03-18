@@ -3,9 +3,6 @@ name: Test
 on:
   push:
   pull_request:
-  #schedule:
-    # Weekly, at 5:45 AM on Friday (somewhat randomly chosen).
-    #- cron: '45 5 * * 5'
   workflow_dispatch:
 
 jobs:
@@ -31,10 +28,8 @@ jobs:
           private_key: '${{ secrets.PRIVATE }}'
           keepalive: 25
       - name: Check endpoint
-        run: ping -W 10 -c 5 -- '${{ secrets.HOST_IP }}'
-      #- name: Check2 endpoint
-      #  run: ping -W 10 -c 5 -- 192.168.0.228
-      - name: Check3 endpoint
+        run: ping -W 10 -c 5 -- 192.168.0.228
+      - name: Check endpoint rpodstrigach
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST_IP }}
@@ -43,7 +38,7 @@ jobs:
           script: |
             whoami
             ls -al
-      - name: Check! endpoint
+      - name: Check endpoint MIR-SRV-CV-01
         uses: appleboy/ssh-action@v1.0.3
         with:
             host: 10.36.68.146
