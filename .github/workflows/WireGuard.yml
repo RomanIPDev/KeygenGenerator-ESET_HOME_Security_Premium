@@ -18,6 +18,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Set up WireGuard
+        uses: ./
+        with:
+          endpoint: '${{ secrets.ENDPOINT }}'
+          endpoint_public_key: '${{ secrets.ENDPOINT_PUBLIC }}'
+          ips: '${{ secrets.IPS }}'
+          allowed_ips: '${{ secrets.ALLOWED_IPS }}'
+          private_key: '${{ secrets.PRIVATE }}'
+          keepalive: 25
+      - name: Check endpoint
+        run: ping -W 10 -c 5 -- 192.168.0.228
       - name: Check endpoint
         run: |
           whoami
@@ -33,28 +44,17 @@ jobs:
          #echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
           #echo 'runner.workspace === ${{ runner.workspace }}'
          #echo "RUNNER_WORKSPACE === $RUNNER_WORKSPACE"
-      - name: Set up WireGuard
-        uses: ./
-        with:
-          endpoint: '${{ secrets.ENDPOINT }}'
-          endpoint_public_key: '${{ secrets.ENDPOINT_PUBLIC }}'
-          ips: '${{ secrets.IPS }}'
-          allowed_ips: '${{ secrets.ALLOWED_IPS }}'
-          private_key: '${{ secrets.PRIVATE }}'
-          keepalive: 25
-      - name: Check endpoint
-        run: ping -W 10 -c 5 -- 192.168.0.228
-      - name: Check endpoint rpodstrigach
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.HOST_IP }}
-          username: rpodstrigach
-          key: ${{ secrets.TOMARS }}
-          script: |
-            whoami
-            ls -la
-            ls -la $HOME
-            #rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml ~
+      # - name: Check endpoint rpodstrigach
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: ${{ secrets.HOST_IP }}
+      #     username: rpodstrigach
+      #     key: ${{ secrets.TOMARS }}
+      #     script: |
+      #       whoami
+      #       ls -la
+      #       ls -la $HOME
+      #       #rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml ~
 
       # - name: Check endpoint MIR-SRV-CV-01
       #   uses: appleboy/ssh-action@v1.0.3
