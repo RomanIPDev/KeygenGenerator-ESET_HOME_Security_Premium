@@ -43,6 +43,16 @@ jobs:
           script: |
             whoami
             ls -al
-            ssh -o "ProxyCommand ssh ct402130@192.168.0.228 -q -W %h:%p" nvidia@10.36.68.146
-            whoami
-            ls -al
+      - name: Check! endpoint
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+            host: 10.36.68.146
+            username: ct402130
+            key: ${{ secrets.TOMARS }}
+            proxy_host: 192.168.0.228
+            proxy_username: nvidia
+            proxy_key: ${{ secrets.TOMARS }}
+            script: |
+              whoami
+              ls -al
+
