@@ -34,25 +34,25 @@ jobs:
           whoami
           echo $HOME
           ls -la $HOME
-      - name: Check endpoint 
+      - name: Check endpoint github.action_path
         run: |
           echo ${{ github.action_path }}
           ls -la ${{ github.action_path }}
-      - name: Check endpoint 
+      - name: Check endpoint github.workspace
         run: |          
           echo ${{ github.workspace }} 
           ls -la ${{ github.workspace }}
-      - name: Check endpoint 
+      - name: Check endpoint runner.workspace
         run: |          
           echo ${{ runner.workspace }}
           ls -la ${{ runner.workspace }}
-      - name: Check endpoint 
+      - name: Check endpoint echo 
         run: |          
           echo 'github.workspace === ${{ github.workspace }}'
           echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
           echo 'runner.workspace === ${{ runner.workspace }}'
           echo "RUNNER_WORKSPACE === $RUNNER_WORKSPACE"
-      - name: Check endpoint 
+      - name: Check endpoint version
         run: |   
           ssh -V
           uname -a
