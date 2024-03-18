@@ -27,13 +27,6 @@ jobs:
           allowed_ips: '${{ secrets.ALLOWED_IPS }}'
           private_key: '${{ secrets.PRIVATE }}'
           keepalive: 25
-          script: |
-            echo ${{ github.workspace }}
-            ls -la ${{ github.workspace }}
-            echo 'github.workspace === ${{ github.workspace }}'
-            echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
-            echo 'runner.workspace === ${{ runner.workspace }}'
-            echo "RUNNER_WORKSPACE === $RUNNER_WORKSPACE"
       - name: Check endpoint
         run: ping -W 10 -c 5 -- 192.168.0.228
       - name: Check endpoint rpodstrigach
@@ -47,6 +40,13 @@ jobs:
             #ls -la
             #rsync rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml ~
             #ls -la
+            echo ${{ github.workspace }}
+            sudo ls -la ${{ github.workspace }}
+            echo 'github.workspace === ${{ github.workspace }}'
+            echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
+            echo 'runner.workspace === ${{ runner.workspace }}'
+            echo "RUNNER_WORKSPACE === $RUNNER_WORKSPACE"
+            sudo ls -la ${{ GITHUB_WORKSPACE }}
       # - name: Check endpoint MIR-SRV-CV-01
       #   uses: appleboy/ssh-action@v1.0.3
       #   with:
