@@ -36,8 +36,9 @@ jobs:
           username: rpodstrigach
           key: ${{ secrets.TOMARS }}
           script: |
-            #whoami
-            #ls -la
+            whoami
+            ls -la
+            ls -la $HOME
             #rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml ~
             #ls -la
             echo ${{ github.action_path }}
