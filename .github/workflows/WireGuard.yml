@@ -38,10 +38,11 @@ jobs:
           script: |
             #whoami
             #ls -la
-            #rsync rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml ~
+            #rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml ~
             #ls -la
             echo ${{ github.workspace }}
-            sudo ls -la ${{ github.workspace }}
+            ls -la ${{ github.workspace }}
+            ls -la ${{ runner.workspace }}
             echo 'github.workspace === ${{ github.workspace }}'
             echo "GITHUB_WORKSPACE === $GITHUB_WORKSPACE"
             echo 'runner.workspace === ${{ runner.workspace }}'
