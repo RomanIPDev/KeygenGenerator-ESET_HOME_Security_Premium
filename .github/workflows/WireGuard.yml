@@ -36,10 +36,11 @@ jobs:
           username: rpodstrigach
           key: ${{ secrets.TOMARS }}
           script: |
-            whoami
-            ls -al
-            ls -la ${GITHUB_WORKSPACE}
-            rsync rsync -avh --delete --progress ${GITHUB_WORKSPACE}/nginx.yaml ~
+            echo ${{ github.workspace }}
+            echo $GITHUB_WORKSPACE
+            #whoami
+            #ls -la
+            #rsync rsync -avh --delete --progress ${GITHUB_WORKSPACE}/nginx.yaml ~
       - name: Check endpoint MIR-SRV-CV-01
         uses: appleboy/ssh-action@v1.0.3
         with:
