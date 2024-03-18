@@ -43,7 +43,9 @@ jobs:
             echo "env_var:$FIRST_NAME"
             exit 1
           host: ${{ secrets.HOST_IP }}
-          user: rpodstrigach
+          user: root
           key: ${{ secrets.TOMARS}}
 #          pass: ${{ secrets.PASS }}
           args: "-tt -vvv"
+      - name: Check2 endpoint
+        run: ssh rpodstrigach@'${{ secrets.HOST_IP }}'
