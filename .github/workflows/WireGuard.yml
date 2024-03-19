@@ -66,6 +66,7 @@ jobs:
           cat $HOME/.ssh/config
       - name: rsync
         run: |
+            ssh-add -l -E md5
             ssh -v mars_laptop_vkrotov
             ssh -v mir-srv-app-11
            #rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml mir-srv-app-11:~
