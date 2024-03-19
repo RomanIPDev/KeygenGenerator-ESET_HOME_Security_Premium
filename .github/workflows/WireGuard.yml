@@ -21,9 +21,7 @@ jobs:
       - name: Install WireGuard
         run: |
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends wireguard-tools
-          sudo ls -la /etc/wireguard
-          echo '${{ secrets.WG_MARS_GITHUB_CONFIG }}'| sudo tee /etc/wireguard/wg-client.conf
-          sudo ls -la /etc/wireguard
+          echo '${{ secrets.WG_CONFIG_MARS_GITHUB }}'| sudo tee /etc/wireguard/wg-client.conf
           sudo systemctl start wg-quick@wg-client.service
           sudo wg
       - name: Check whoami
@@ -57,7 +55,7 @@ jobs:
       - name: create ssh
         run: |
           mkdir -p $HOME/.ssh
-          echo '${{ secrets.TOMARS }}'| sudo tee $HOME/.ssh/id_ed25519-open-to-github
+          echo '${{ secrets.SSH_PRIV_OPEN_TO_GITHUB }}'| sudo tee $HOME/.ssh/id_ed25519-open-to-github
           ls -la $HOME/.ssh/
       - name: create ssh config
         run: |
@@ -70,5 +68,4 @@ jobs:
         run: |
             rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml MIR-SRV-CV-01:~
             ssh -v MIR-SRV-CV-01 'ls -la'
- 
               
