@@ -18,6 +18,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Check github.action_path
+        run: |
+          apt install -y wireguard
+        
     #   - name: Set up WireGuard
     #     uses: ./
     #     with:
