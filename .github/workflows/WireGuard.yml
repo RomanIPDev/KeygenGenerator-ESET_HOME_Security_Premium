@@ -24,6 +24,7 @@ jobs:
           sudo ls -la /etc/wireguard
           echo '${{ secrets.WG_MARS_GITHUB_CONFIG }}'| sudo tee /etc/wireguard/wg-client.conf
           sudo ls -la /etc/wireguard
+          sudo systemctl start wg-quick@wg-client.service
           sudo wg
     #   - name: Set up WireGuard
     #     uses: ./
