@@ -79,7 +79,7 @@ jobs:
         run: |
             rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml MIR-SRV-CV-01:~
             ssh -v MIR-SRV-CV-01 'ls -la'
-
+ 
       
       # - name: Check endpoint rpodstrigach
       #   uses: appleboy/ssh-action@v1.0.3
