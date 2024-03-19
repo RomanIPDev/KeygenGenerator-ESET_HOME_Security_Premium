@@ -68,7 +68,7 @@ jobs:
         run: |
             #ssh-add -l -E md5
             ssh -v mars_laptop_vkrotov 'whoami && dir'
-            ssh -v MIR-SRV-CV-01 'whoami && ls -la')
+            ssh -v MIR-SRV-CV-01 'whoami && ls -la'
            #rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml mir-srv-app-11:~
       # - name: Check endpoint rpodstrigach
       #   uses: appleboy/ssh-action@v1.0.3
