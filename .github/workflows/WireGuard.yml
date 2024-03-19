@@ -46,14 +46,14 @@ jobs:
         run: |          
           echo ${{ runner.workspace }}
           ls -la ${{ runner.workspace }}
-      - name: Check ping
-        run: ping -W 10 -c 5 -- 192.168.0.228
       - name: Check version
         run: |
           ssh -V
           uname -a
           rsync --version
-          git --version
+          git --version      
+      - name: Check ping
+        run: ping -W 10 -c 5 -- 192.168.0.228
       - name: create ssh
         run: |
           mkdir -p $HOME/.ssh
