@@ -15,18 +15,18 @@ jobs:
     defaults:
       run:
         shell: bash
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set up WireGuard
-        uses: ./
-        with:
-          endpoint: '${{ secrets.ENDPOINT }}'
-          endpoint_public_key: '${{ secrets.ENDPOINT_PUBLIC }}'
-          ips: '${{ secrets.IPS }}'
-          allowed_ips: '${{ secrets.ALLOWED_IPS }}'
-          private_key: '${{ secrets.PRIVATE }}'
-          keepalive: 25
+    # steps:
+    #   - name: Checkout
+    #     uses: actions/checkout@v2
+    #   - name: Set up WireGuard
+    #     uses: ./
+    #     with:
+    #       endpoint: '${{ secrets.ENDPOINT }}'
+    #       endpoint_public_key: '${{ secrets.ENDPOINT_PUBLIC }}'
+    #       ips: '${{ secrets.IPS }}'
+    #       allowed_ips: '${{ secrets.ALLOWED_IPS }}'
+    #       private_key: '${{ secrets.PRIVATE }}'
+    #       keepalive: 25
       - name: Check whoami
         run: |
           whoami
