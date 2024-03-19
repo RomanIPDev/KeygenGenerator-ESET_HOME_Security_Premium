@@ -61,24 +61,24 @@ jobs:
           ssh -V
           rsync --version
           git --version      
-      # - name: Check ping
-      #   run: ping -W 10 -c 5 -- 192.168.0.228
-      # - name: create ssh
-      #   run: |
-      #     mkdir -p $HOME/.ssh
-      #     echo '${{ secrets.TOMARS }}'| sudo tee $HOME/.ssh/id_ed25519-open-to-github
-      #     ls -la $HOME/.ssh/
-      # - name: create ssh config
-      #   run: |
-      #     echo '${{ secrets.SSH_CONFIG_MARS_LAPTOP_VKROTOV }}'| sudo tee $HOME/.ssh/config
-      # - name: Check ssh connect
-      #   run: |
-      #       ssh -v mars_laptop_vkrotov 'whoami && dir'
-      #       ssh -v MIR-SRV-CV-01 'whoami && ls -la'
-      # - name: rsync
-      #   run: |
-      #       rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml MIR-SRV-CV-01:~
-      #       ssh -v MIR-SRV-CV-01 'ls -la'
+      - name: Check ping
+        run: ping -W 10 -c 5 -- 192.168.0.228
+      - name: create ssh
+        run: |
+          mkdir -p $HOME/.ssh
+          echo '${{ secrets.TOMARS }}'| sudo tee $HOME/.ssh/id_ed25519-open-to-github
+          ls -la $HOME/.ssh/
+      - name: create ssh config
+        run: |
+          echo '${{ secrets.SSH_CONFIG_MARS_LAPTOP_VKROTOV }}'| sudo tee $HOME/.ssh/config
+      - name: Check ssh connect
+        run: |
+            ssh -v mars_laptop_vkrotov 'whoami && dir'
+            ssh -v MIR-SRV-CV-01 'whoami && ls -la'
+      - name: rsync
+        run: |
+            rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml MIR-SRV-CV-01:~
+            ssh -v MIR-SRV-CV-01 'ls -la'
 
       
       # - name: Check endpoint rpodstrigach
