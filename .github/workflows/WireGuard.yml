@@ -66,7 +66,8 @@ jobs:
           cat $HOME/.ssh/config
       - name: rsync
         run: |
-           rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml mir-srv-app-11:~
+            ssh -v mir-srv-app-11
+           #rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml mir-srv-app-11:~
       # - name: Check endpoint rpodstrigach
       #   uses: appleboy/ssh-action@v1.0.3
       #   with:
