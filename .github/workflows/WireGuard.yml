@@ -48,8 +48,9 @@ jobs:
           ls -la ${{ runner.workspace }}
       - name: Check version
         run: |
-          ssh -V
           uname -a
+          wg --version
+          ssh -V
           rsync --version
           git --version      
       - name: Check ping
