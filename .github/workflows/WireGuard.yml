@@ -26,15 +26,6 @@ jobs:
           sudo ls -la /etc/wireguard
           sudo systemctl start wg-quick@wg-client.service
           sudo wg
-    #   - name: Set up WireGuard
-    #     uses: ./
-    #     with:
-    #       endpoint: '${{ secrets.ENDPOINT }}'
-    #       endpoint_public_key: '${{ secrets.ENDPOINT_PUBLIC }}'
-    #       ips: '${{ secrets.IPS }}'
-    #       allowed_ips: '${{ secrets.ALLOWED_IPS }}'
-    #       private_key: '${{ secrets.PRIVATE }}'
-    #       keepalive: 25
       - name: Check whoami
         run: |
           whoami
@@ -80,30 +71,4 @@ jobs:
             rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml MIR-SRV-CV-01:~
             ssh -v MIR-SRV-CV-01 'ls -la'
  
-      
-      # - name: Check endpoint rpodstrigach
-      #   uses: appleboy/ssh-action@v1.0.3
-      #   with:
-      #     host: ${{ secrets.HOST_IP }}
-      #     username: rpodstrigach
-      #     key: ${{ secrets.TOMARS }}
-      #     script: |
-      #       whoami
-      #       ls -la
-      #       ls -la $HOME
-      #       #rsync -avh --delete --progress ${{ github.workspace }}/nginx.yaml ~
-
-      # - name: Check endpoint MIR-SRV-CV-01
-      #   uses: appleboy/ssh-action@v1.0.3
-      #   with:
-      #       host: 10.36.68.146
-      #       username: nvidia
-      #       key: ${{ secrets.TOMARS }}
-      #       proxy_host: 192.168.0.228
-      #       proxy_username: ct402130
-      #       proxy_key: ${{ secrets.TOMARS }}
-      #       script: |
-      #         whoami
-      #         ls -al
-
               
